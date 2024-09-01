@@ -70,7 +70,8 @@ class DataFrame:
 
         :param series: The Series object to add as a new column.
         """
-        # TODO: Person 1 - Implement this function
+        self.data.append(series)
+        self.columns.append(series.name)
 
 
     def drop_column(self, column_name: str) -> None:
@@ -97,7 +98,7 @@ class DataFrame:
         :param column_name: The name of the column to retrieve.
         :return: The Series object for the specified column.
         """
-        # TODO: Person 1 - Implement this function
+        return self.data[self.columns.index(column_name)]
 
 
     def set_column(self, column_name: str, values: list[float]) -> None:
