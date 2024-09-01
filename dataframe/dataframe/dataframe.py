@@ -70,7 +70,8 @@ class DataFrame:
 
         :param series: The Series object to add as a new column.
         """
-        # TODO: Person 1 - Implement this function
+        self.data.append(series)
+        self.columns.append(series.name)
 
 
     def drop_column(self, column_name: str) -> None:
