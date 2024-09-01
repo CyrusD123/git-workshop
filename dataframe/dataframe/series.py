@@ -90,4 +90,7 @@ class Series:
         :param func: A function to apply to each element.
         :return: A new Series with the function applied.
         """
-        # TODO: Person 3 - Implement this function
+        new_data = [func(el) for el in self.data]
+        
+        # Return a new Series with the modified data
+        return Series(new_data, self.name)
