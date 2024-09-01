@@ -49,3 +49,13 @@ def test_df_tail():
     assert df1.tail(2).data == [[5, 6], [7, 8]]
     assert df1.tail(3).data == [[3, 4], [5, 6], [7, 8]]
     assert df1.tail(4).data == [[1, 2], [3, 4], [5, 6], [7, 8]]
+
+def test_df_add_column():
+    # Create Series for the first DataFrame
+    series1_a = Series([1, 2], name="A")
+    series1_b = Series([3, 4], name="B")
+    series1_c = Series([5, 6], name="C")
+    series1_d = Series([7, 8], name="D")
+    df1 = DataFrame([series1_a, series1_b, series1_c])
+    
+    assert df1.add_column(series1_d).data == [[1, 2], [3, 4], [5, 6], [7, 8]]
