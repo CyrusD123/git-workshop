@@ -21,7 +21,7 @@ class Series:
 
     def sum(self) -> float:
         """Return the sum of the data in the series."""
-        # TODO: Person 3 - Implement this function
+        return sum(self.data)
 
 
     def max(self) -> float:
