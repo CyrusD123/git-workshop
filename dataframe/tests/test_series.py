@@ -39,3 +39,12 @@ def test_series_contains():
     assert series3.contains(16) == False
     series4 = Series(data=[1, 1, 1, 3, 4], name="D")
     assert series4.contains(0) == False
+
+
+def test_series_apply():
+    series1 = Series(data=[1, 2, 5, 0], name="A")
+    series1a = series1.apply(lambda x: x + 4)
+    series1b = series1.apply(lambda x: x * 2)
+    assert series1a.data == [5, 6, 9, 4], f"Expected [5, 6, 9, 4], but got {series1a.data}"
+    assert series1b.data == [2, 4, 10, 0], f"Expected [2, 4, 10, 0], but got {series1b.data}"
+
