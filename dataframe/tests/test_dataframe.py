@@ -59,10 +59,14 @@ def test_df_drop():
     df1 = DataFrame([series1_a, series1_b, series1_c, series1_d])
     
 
-    assert df1.drop("A").data == [[3, 4, 5, 6], [5, 6, 7, 8], [7, 8, 9, 10]]
-    assert df1.drop("C").data == [[3, 4, 5, 6], [7, 8, 9, 10]]
-    assert df1.drop("D").data == [[3, 4, 5, 6]]
-    assert df1.drop("B").data == []
+    df1.drop("A")
+    assert df1.data == [[3, 4, 5, 6], [5, 6, 7, 8], [7, 8, 9, 10]]
+    df1.drop("C")
+    assert df1.data == [[3, 4, 5, 6], [7, 8, 9, 10]]
+    df1.drop("D")
+    assert df1.data == [[3, 4, 5, 6]]
+    df1.drop("B")
+    assert df1.data == []
     
 def test_df_add_column():
     # Create Series for the first DataFrame
@@ -85,3 +89,16 @@ def test_df_get_columns():
     assert df1.get_column("B").data == [3, 4]
     assert df1.get_column("C").data == [5, 6]
     assert df1.get_column("D").data == [7, 8]
+
+def test_set_columns():
+    series1_a = Series([1, 2], name="A")
+    series1_b = Series([3, 4], name="B")
+    series1_c = Series([5, 6], name="C")
+    series1_d = Series([7, 8], name="D")
+    df1 = DataFrame([series1_a, series1_b, series1_c, series1_d])
+
+    df1.set_column("A", series1_b)
+    assert df1.data == [[3, 4], [3, 4], [5, 6], [7, 8]]
+    df1.get_column("B", series1_d)
+    assert df1.data == [[3, 4], [7, 8], [5, 6], [7, 8]]
+    
