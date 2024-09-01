@@ -110,7 +110,12 @@ class DataFrame:
         :param column_name: The name of the column to set.
         :param values: A list of data to set for the specified column.
         """
-        # TODO: Person 2 - Implement this function
+        col_idx = 0
+        for i in range(len(self.columns)):
+            if self.columns[i] == column_name:
+                col_idx = i
+
+        self.data[col_idx] = values
 
 
     def remove_duplicates(self) -> None:
