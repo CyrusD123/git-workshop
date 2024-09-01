@@ -60,7 +60,7 @@ class DataFrame:
         :param n: Number of rows to return.
         :return: A new DataFrame with the last n rows.
         """
-        return DataFrame(self.data[-n:])
+        return DataFrame([Series(series.data[-n:], series.name) for series in self.data])
 
     def add_column(self, series: Series) -> None:
         """
@@ -82,7 +82,13 @@ class DataFrame:
 
         :param column_name: The name of the column to drop.
         """
-        # TODO: Person 2 - Implement this function
+        col_idx = 0
+        for i in range(len(self.columns)):
+            if self.columns[i] == column_name:
+                col_idx = i
+
+        self.data.pop(col_idx)
+        self.columns.pop(col_idx)
 
 
     def get_column(self, column_name: str) -> Series:
