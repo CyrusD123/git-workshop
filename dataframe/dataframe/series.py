@@ -40,7 +40,25 @@ class Series:
 
     def mode(self) -> float:
         """Return the mode of the data in the series."""
-        # TODO: Person 3 - Implement this function
+        if not self.data:
+            return None 
+        
+        maxCount = 0
+        mostOften = 0
+        counter = {}
+        for el in self.data:
+            if el not in counter:
+                counter[el] = 0  
+            counter[el] += 1 
+        for key, val in counter.items():
+            if val > maxCount:
+                maxCount = val
+                mostOften = key
+            
+            elif val == maxCount and key < mostOften: # in the case of a tie, go to lowest value
+                mostOften = key
+
+        return mostOften
 
     def unique_val(self) -> list:
         """Return the unique values in the series."""
