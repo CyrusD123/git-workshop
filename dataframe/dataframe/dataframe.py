@@ -143,7 +143,8 @@ class DataFrame:
 
         :param other: Another DataFrame object to concatenate vertically.
         """
-        # TODO: Person 1 - Implement this function
+        for i in range(len(self.data)):
+            self.data[i] = self.data[i] + other.data[i]
 
 
     def concatenate_horizontally(self, other: DataFrame) -> None:
