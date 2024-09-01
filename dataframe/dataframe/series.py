@@ -70,7 +70,10 @@ class Series:
 
         :param value: The specific value being checked.
         """
-        # TODO: Person 3 - Implement this function
+        for el in self.data:
+            if el == value:
+                return True
+        return False
 
     def replace(self, current_val: float, new_val: float) -> Series:
         """Return a new Series with a specific current value replaced with a new value.
